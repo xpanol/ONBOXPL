@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Player</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.player {
+  font-family: 'Special Elite', monospace;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player" onclick="toggleAudio()">
+  <span id="label">PLAY</span>
+</div>
+
+<audio id="audio" preload="none">
+  <source src="https://xpanol.github.io/ONBOXPL/D1_ONB_XPL_EN.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const audio = document.getElementById('audio');
+const label = document.getElementById('label');
+
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play();
+    label.textContent = 'PAUSE';
+  } else {
+    audio.pause();
+    label.textContent = 'PLAY';
+  }
+}
+
+audio.addEventListener('ended', function () {
+  label.textContent = 'PLAY';
+});
+</script>
+
+</body>
+</html>
